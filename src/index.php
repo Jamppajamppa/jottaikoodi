@@ -1,5 +1,5 @@
 <?php
-echo "Docker toiasdadsasdadaasmii!<br>";
+echo "Docker toimiiko??!<br>";
 
 try {
     $pdo = new PDO(

@@ -1,13 +1,16 @@
 <?php
-echo "toimmmiiii<br>";
+class auto{
 
-try {
-    $pdo = new PDO(
-        'mysql:host=db;dbname=testdb;charset=utf8',
-        'user',
-        'pass'
-    );
-    echo "Tietokantayhteys toimii!";
-} catch (PDOException $e) {
-    echo "Virhe: " . $e->getMessage();
+    public string $merkki;
+    public string $malli;
+
+    public function Tulosta(): string{
+        return "auto: $this->merkki $this->malli";
+    }
 }
+    $auto = new auto();
+    $auto->merkki = "Toyota";
+    $auto->malli = "Corolla";
+    echo $auto->Tulosta();
+
+?>

@@ -6,6 +6,34 @@
     <title>Lamppu</title>
 </head>
 <body>
-
+    <h2>Lampun tila</h2>
+    <button onclick="kytkin()">Kytkin</button>
 </body>
+<script>
+    class Lamppu {
+        constructor() {
+            this.tila = "sammunut";
+        }
+
+        sytyta() {
+            this.tila = "päällä";
+        }
+
+        sammuta() {
+            this.tila = "sammunut";
+        }
+    }
+
+    const lamppu = new Lamppu();
+
+    function kytkin() {
+        if (lamppu.tila === "sammunut") {
+            lamppu.sytyta();
+            document.querySelector("h2").innerHTML = "Lamppu päällä 💡✅ ";
+        } else {
+            lamppu.sammuta();
+            document.querySelector("h2").innerHTML = "Lamppu sammutettu 💡❌ ";
+        }
+    }
+</script>
 </html>

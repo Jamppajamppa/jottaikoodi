@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuotteen lisäys</title>
+</head>
+<body>
+    <h2>Lisää tuote</h2>
+    <input type="text" id="tuote" placeholder="Syötä tuotteen nimi"><br>
+    <input type="number" id="hinta" placeholder="Syötä tuotteen hinta" step="0.01"><br>
+    <button onclick="lisaaTuote()">Lisää tuote</button>
+
+    <h3>Tuotteet</h3>
+    <ul id="tuotteet"></ul>
+
+    <p id="yhteensa">Yhteensä: 0.00 €</p>
+</body>
+<script src="script.js"></script>
+</html>

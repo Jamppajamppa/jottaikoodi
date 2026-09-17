@@ -12,22 +12,30 @@ class Product {
 updateProductList();
 
 function updateProductList() {
-const productList = [];
-    fetch("api.php", {
-        method: "GET"
-    })
-    .then(response => response.json())
-    .then(data => {
-        data.foreach(product => {
-            productList.push(new Product(product.name, product.price));
-
-            let products = "";
-            for (let i = 0; i < productList.length; i++) {
-                products += productList[i].printDetails();
+    fetch("./api.php")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("API-virhe: " + response.status);
             }
-            document.getElementById("productList").innerHTML = products;
+            return response.json();
         })
-    });
+        .then(data => {
+            const productList = document.getElementById("productList");
+
+            productList.innerHTML = data
+                .map(product => `
+                    <tr>
+                        <td>${product.name}</td>
+                        <td>${product.price}</td>
+                    </tr>
+                `)
+                .join("");
+        })
+        .catch(error => {
+            console.error(error);
+            document.getElementById("msg").textContent =
+                "Tuotteiden lataaminen epäonnistui.";
+        });
 }
 
 function addProduct() {
@@ -36,7 +44,7 @@ function addProduct() {
 
     const product = new Product(name, price);
 
-fetch("api.php", {
+fetch("./api.php", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"

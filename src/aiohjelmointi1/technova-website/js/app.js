@@ -1,0 +1,2 @@
+console.log("TechNova loaded");
+``
